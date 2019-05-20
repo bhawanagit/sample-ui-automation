@@ -19,9 +19,11 @@ public class SearchByUrlSteps extends DriverFactory {
         SearchByUrlPage.ClickOnCameraIcon();
     }
 
-    @Then("^User add the url$")
-    public void user_add_the_url() throws Throwable {
-        SearchByUrlPage.addUrl(Constant.Image_url);
+
+    @Then("^User add the url \"([^\"]*)\"$")
+    public void user_add_the_url(String url) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        SearchByUrlPage.addUrl(url);
     }
 
     @And("^User click on search by image button$")

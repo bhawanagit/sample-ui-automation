@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class SearchByUrl_Page extends BasePage {
 
-    public @FindBy(css = "#gbw > div > div > div.gb_Dd.gb_f.gb_2f.gb_Sf > div:nth-child(2) > a") WebElement images_text;
+    public @FindBy(css = "a[data-pid='2']") WebElement images_text;
     public @FindBy(css = ".S3Wjs") WebElement camera_icon;
     public @FindBy(css = "#qbui") WebElement edit_text_Search;
     public @FindBy(css = "#qbbtc > input") WebElement button_Search;
