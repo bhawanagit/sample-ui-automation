@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  build:
+
+    working_directory: ~/sample-ui-automation
+
+    docker: # run the steps with Docker
+      - image: circleci/openjdk:8-jdk-browsers
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          key: sampleuiautomation-{{ checksum "pom.xml" }}
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: sampleuiautomation-{{ checksum "pom.xml" }}
+      - run: cd /home/circleci/sample-ui-automation/src/test/java/resources/driver && chmod +x chromedriver.exe
+      - run: cd /home/circleci/sample-ui-automation/script && chmod +x RegressionExecution.sh
+      - run: google-chrome --version
+      - run: script/RegressionExecution.sh
+      - store_test_results:
+          path: output/
+      - store_artifacts:
+          path: output/
+
+
+
+
+
+
+
+    
+
+
